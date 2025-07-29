@@ -1,13 +1,10 @@
-import app from './app';
-import dotenv from 'dotenv';
+import app from "./app";
+import dotenv from "dotenv";
 
 dotenv.config();
 
 const PORT = process.env.PORT || 5005;
 
-if (process.env.NODE_ENV !== 'production') {
-  const PORT = process.env.PORT || 5005;
-  app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-  });
-}
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});

@@ -21,7 +21,6 @@
 
 // export default app;
 
-
 import express from "express";
 import cors from "cors"; // Add this import
 import userRoutes from "./routes/user/user.routes";
@@ -33,20 +32,28 @@ dotenv.config();
 const app = express();
 
 // CORS Configuration - Add this BEFORE other middleware
-const corsOptions = {
-  origin: [
-    'http://localhost:3000',
-    'http://localhost:3001', 
-    'http://localhost:3004', // Your current frontend port
-    'https://your-frontend-domain.com', // Add your production frontend domain
-  ],
-  credentials: true,
-  optionsSuccessStatus: 200,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
-};
+// const corsOptions = {
+//   origin: [
+//     "http://localhost:3000",
+//     "http://localhost:3001",
+//     "http://localhost:3004", // Your current frontend port
+//     "https://your-frontend-domain.com", // Add your production frontend domain
+//   ],
+//   credentials: true,
+//   optionsSuccessStatus: 200,
+//   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+//   allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+  })
+);
 
 // Alternative: Allow all origins (for development only - NOT recommended for production)
 // app.use(cors());

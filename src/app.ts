@@ -27,7 +27,7 @@ import userRoutes from "./routes/user/user.routes";
 import connectDB from "./config/Mongodbconfig/dbconfig";
 import dotenv from "dotenv";
 import pool from "./config/postgresConfig/neonDB";
-
+import restaurantRoutes from "./routes/restaurant/restaurant.route"; // Import restaurant routes
 dotenv.config();
 const app = express();
 
@@ -70,5 +70,6 @@ connectDB();
 
 // Routes
 app.use("/api/users", userRoutes);
+app.use("/api/restaurants", restaurantRoutes);
 
 export default app;
